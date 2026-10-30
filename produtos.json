@@ -1730,5 +1730,14 @@
       "Thinner PU 8000 5L",
       "Thinner PU 8000 900ml"
     ]
+  },
+  {
+    "id": "farben-verniz-alto-solido",
+    "name": "VERNIZ ALTO SÓLIDO - FARBEN",
+    "brand": "Farben",
+    "category": "Vernizes",
+    "price": 0,
+    "image": "https://farben.cdn.magazord.com.br/img/2025/09/produto/775/151-lata-900ml-verniz-pu-hp-42-mm-900ml.jpg?ims=290x290",
+    "priceOnRequest": true
   }
 ]
