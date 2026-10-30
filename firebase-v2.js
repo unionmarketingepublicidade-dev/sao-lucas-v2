@@ -150,6 +150,33 @@ async function loadManagedProducts(){
 }
 el('adminProductSearch').oninput=drawManagedProducts;
 el('reloadProducts').onclick=loadManagedProducts;
+// Exportação somente leitura: catálogo efetivo, documentos Firestore e configurações.
+el('exportCatalogBackup').onclick=async()=>{
+  if(!isAdmin){setSync('Entre como administrador para exportar.');return}
+  const button=el('exportCatalogBackup');button.disabled=true;
+  setSync('Preparando backup do Firebase...');
+  try{
+    const [productsSnap,settingsSnap]=await Promise.all([getDocs(collection(db,'products')),getDocs(collection(db,'settings'))]);
+    const firestoreProducts=productsSnap.docs.map(d=>({id:d.id,...d.data()}));
+    const saved=new Map(firestoreProducts.map(p=>[p.id,p]));
+    const merged=initialCatalog.map(p=>saved.get(p.id)||p).filter(p=>!p.deleted);
+    const initialIds=new Set(initialCatalog.map(p=>p.id));
+    for(const p of firestoreProducts)if(!initialIds.has(p.id)&&!p.deleted)merged.push(p);
+    const settings=Object.fromEntries(settingsSnap.docs.map(d=>[d.id,d.data()]));
+    const backup={
+      format:'sao-lucas-v2-backup',version:1,exportedAt:new Date().toISOString(),
+      summary:{initialCatalog:initialCatalog.length,firestoreDocuments:firestoreProducts.length,activeProducts:merged.length,deletedDocuments:firestoreProducts.filter(p=>p.deleted).length},
+      products:merged,firestoreProducts,settings
+    };
+    const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');link.href=url;link.download='sao-lucas-v2-backup-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
+    setSync('Backup gerado: '+merged.length+' produtos ativos, '+firestoreProducts.length+' documentos no Firebase. Guarde o arquivo com segurança.');
+  }catch(e){console.error('Falha ao exportar backup',e);setSync('Falha ao exportar. Nenhum dado foi alterado: '+(e.code||e.message||e))}
+  finally{button.disabled=false}
+};
+
 onAuthStateChanged(auth,user=>{if(user?.uid===ADMIN_UID)loadManagedProducts();else{managedProducts=[];el('adminProductList').textContent='Entre para gerenciar produtos.'}});
 // Fotos compactadas como data URL no Firestore Spark. Evita tokens GitHub expostos.
 async function compressPhoto(file){
