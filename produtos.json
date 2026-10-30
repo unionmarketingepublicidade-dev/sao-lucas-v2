@@ -2121,5 +2121,20 @@
       "Grão 50 — 7 polegadas",
       "Grão 80 — 7 polegadas"
     ]
+  },
+  {
+    "id": "3m-disco-flap",
+    "name": "DISCO FLAP - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1028381J/disco-flap-3m-564d.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 40 — Grande",
+      "Grão 40 — Pequeno",
+      "Grão 60",
+      "Grão 80"
+    ]
   }
 ]
