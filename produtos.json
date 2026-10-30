@@ -2074,5 +2074,24 @@
       "Papel Semikraft 45 cm",
       "Papel Semikraft 90 cm"
     ]
+  },
+  {
+    "id": "3m-disco-hookit-321u-blue",
+    "name": "DISCO HOOKIT 321U BLUE - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1577865J/abrasive-discs-3m-blue-321u-7holes-picture.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 150 — meta de 2 mil unid.",
+      "Grão 180 — meta de 2 mil unid.",
+      "Grão 220 — meta de 2 mil unid.",
+      "Grão 320 — meta de 2 mil unid.",
+      "Grão 40 — meta de 2 mil unid.",
+      "Grão 400 — meta de 2 mil unid.",
+      "Grão 600 — meta de 2 mil unid.",
+      "Grão 80 — meta de 2 mil unid."
+    ]
   }
 ]
