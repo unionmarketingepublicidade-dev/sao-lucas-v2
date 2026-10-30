@@ -1,0 +1,20 @@
+SÃO LUCAS V2 — FIREBASE NOVO
+
+Este pacote usa exclusivamente o projeto Firebase sao-lucas-2.
+NÃO modifica o Firebase antigo nem o site anterior.
+
+VISUALIZAÇÃO LOCAL:
+Abrir index.html com dois cliques exibe a prévia do catálogo.
+A conexão Firebase exige um servidor HTTP(S), não funciona via file://.
+
+PARA TESTAR O PAINEL E O FIRESTORE:
+Na pasta extraída, executar: python -m http.server 8080
+Abrir http://localhost:8080 no navegador.
+Na barra superior, clicar em Administração, entrar com a conta cadastrada no Firebase São Lucas 2.
+Clicar em Importar catálogo inicial somente quando desejar copiar os produtos para o banco novo.
+A importação não sobrescreve produtos existentes e não exclui nenhum registro.
+
+ATENÇÃO: As imagens locais acompanham o ZIP. Algumas referências antigas continuam quebradas e exigem recuperação.
+Os links externos podem deixar de funcionar. Produtos com preço zero são mostrados como 'Consulte o valor'.
+
+Ainda não está hospedado em domínio público. Antes de publicar, revisar imagens, preços e regras do Firestore.
