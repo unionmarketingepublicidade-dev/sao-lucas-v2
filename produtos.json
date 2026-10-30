@@ -2256,5 +2256,22 @@
       "Grão 2500",
       "Grão 3000"
     ]
+  },
+  {
+    "id": "3m-lixa-ferro-221t",
+    "name": "LIXA FERRO 221T - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1379974J/3m-221t-iron-lick.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 100",
+      "Grão 220",
+      "Grão 36",
+      "Grão 40",
+      "Grão 50",
+      "Grão 80"
+    ]
   }
 ]
