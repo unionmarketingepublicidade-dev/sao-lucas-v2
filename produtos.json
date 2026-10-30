@@ -2039,5 +2039,14 @@
       "150 g",
       "290 g"
     ]
+  },
+  {
+    "id": "maxirubber-2d7451c9fb7f",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 33",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/2d7451c9fb7f079ad38a69cb088836a8.jpg",
+    "priceOnRequest": true
   }
 ]
