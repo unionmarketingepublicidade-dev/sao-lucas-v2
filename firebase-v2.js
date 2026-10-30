@@ -9,8 +9,8 @@ const el=id=>document.getElementById(id);
 const status=message=>el('adminStatus').textContent=message;
 const setSync=message=>el('syncStatus').textContent=message;
 let isAdmin=false;
-// Cópia imutável do catálogo de origem, independente dos produtos já presentes no Firestore.
-const initialCatalog=window.v2Catalog.PRODUCTS.map(product=>structuredClone(product));
+// O catálogo é mantido exclusivamente no Firestore.
+const initialCatalog=[];
 el('adminClose').onclick=()=>el('adminModal').hidden=true;
 el('adminModal').onclick=e=>{if(e.target===el('adminModal'))el('adminModal').hidden=true};
 el('adminLogin').onclick=async()=>{
@@ -55,10 +55,11 @@ async function refreshCatalog(){
     window.v2Catalog.PRODUCTS.splice(0,window.v2Catalog.PRODUCTS.length,...merged);
     window.v2Catalog.CATS.splice(0,window.v2Catalog.CATS.length,...new Set(merged.map(p=>p.category).filter(Boolean)));
     window.v2Catalog.render();
-  }catch(e){console.warn('Firestore indisponível; mantendo catálogo local',e)}
+  }catch(e){console.warn('Firestore indisponível; catálogo não carregado',e);window.v2Catalog.PRODUCTS.splice(0);window.v2Catalog.CATS.splice(0);window.v2Catalog.render()}
 }
 // PRODUCTs e CATS estão declarados em script clássico, e portanto acessíveis globalmente.
 refreshCatalog();
+el('importCatalog').disabled=true;el('importCatalog').hidden=true;
 el('importCatalog').onclick=async()=>{if(!isAdmin)return;const source=initialCatalog;if(!confirm(`Importar até ${source.length} produtos para o Firebase São Lucas 2? Produtos já existentes não serão substituídos.`))return;el('importCatalog').disabled=true;try{const existing=await getDocs(collection(db,'products'));const ids=new Set(existing.docs.map(d=>d.id));const pending=source.filter(p=>!ids.has(p.id));let done=0;for(let i=0;i<pending.length;i+=350){const batch=writeBatch(db);for(const p of pending.slice(i,i+350))batch.set(doc(db,'products',p.id),p);await batch.commit();done+=Math.min(350,pending.length-i);setSync(`${done} de ${pending.length} produtos importados.`)}setSync(`Concluído: ${done} novos produtos. ${source.length-done} já existiam.`);await refreshCatalog();await loadManagedProducts()}catch(e){setSync('Falha na importação: '+(e.message||e))}finally{el('importCatalog').disabled=false}};
 // Gerenciamento: lista apenas os documentos efetivamente salvos no Firestore.
 let managedProducts=[];
@@ -115,7 +116,7 @@ function drawManagedProducts(){
       if(!confirm('Remover "'+p.name+'" da loja? Esta ação ficará registrada no Firebase.'))return;
       del.disabled=true;
       try{
-        if(initialCatalog.some(item=>item.id===p.id)){await setDoc(doc(db,'products',p.id),{id:p.id,deleted:true},{merge:true});}else{await deleteDoc(doc(db,'products',p.id));}
+        await deleteDoc(doc(db,'products',p.id));
         if(el('editingProductId').value===p.id)clearEditor();
         setSync('Produto excluído do Firebase.');
         await loadManagedProducts();await refreshCatalog();
@@ -145,7 +146,7 @@ async function loadManagedProducts(){
     setSync('Catálogo sincronizado: '+managedProducts.length+' produtos.');
   }catch(e){
     if(seq!==managedLoadSequence)return;
-    setSync('Catálogo local disponível; sincronização pendente: '+(e.code||e.message||e));
+    setSync('Não foi possível carregar o catálogo do Firebase: '+(e.code||e.message||e));
   }
 }
 el('adminProductSearch').oninput=drawManagedProducts;
