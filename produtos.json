@@ -2048,5 +2048,18 @@
     "price": 0,
     "image": "https://www.maxirubber.com.br/upload/products/2d7451c9fb7f079ad38a69cb088836a8.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "polimax-papel-kraft-mascaramento",
+    "name": "PAPEL KRAFT PARA MASCARAMENTO - POLIMAX",
+    "brand": "Polimax",
+    "category": "Fitas & Mascaramento",
+    "price": 0,
+    "image": "https://www.polimax.ind.br/assets/imagens/papel-p-mascaramento-kraft.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Papel Kraft 90 cm",
+      "Papel Kraft 45 cm"
+    ]
   }
 ]
