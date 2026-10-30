@@ -1811,5 +1811,77 @@
     "price": 0,
     "image": "https://www.maxirubber.com.br/upload/products/44ddbfc802f209fb92daed44c430e544.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-b2557eb4398d",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 9",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/b2557eb4398dc4cf4c5204fa2a3d3f5d.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-3634bffbf733",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 10",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/3634bffbf733bb77f54d292704fbd132.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-479e3dd939f0",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 11",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/479e3dd939f0f587815a7696f7c98b6a.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-e3131a6cdf70",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 12",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/e3131a6cdf7057fc64d890e14976e8a9.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-4d8e5173a8c0",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 13",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/4d8e5173a8c0951953d666196584ad56.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-9f82ed3415d6",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 14",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/9f82ed3415d65f9a46c1049bca0396aa.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-3bb1b20354ef",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 15",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/3bb1b20354ef7c242163fe86dc269ec1.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-090fec70843b",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 16",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/090fec70843be8a025d952bd621aae32.jpg",
+    "priceOnRequest": true
   }
 ]
