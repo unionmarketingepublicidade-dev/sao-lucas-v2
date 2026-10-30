@@ -2194,5 +2194,14 @@
     "price": 0,
     "image": "https://multimedia.3m.com/mws/media/2675294J/3m-particulate-filter-5n11-n95.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "3m-fita-crepe-amarela-alta-performance",
+    "name": "FITA CREPE AMARELA DE ALTA PERFORMANCE - 3M",
+    "brand": "3M",
+    "category": "Fitas & Mascaramento",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/2811324J/high-performance-yellow-masking-tape-brazil-mixed-family.jpg",
+    "priceOnRequest": true
   }
 ]
