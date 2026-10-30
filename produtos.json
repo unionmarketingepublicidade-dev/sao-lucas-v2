@@ -1546,5 +1546,59 @@
     "price": 0,
     "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/Colorlac.png",
     "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-pano-pega-po",
+    "name": "PANO PEGA PÓ - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/04/pano-pega-po.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-primer-pu-8-1",
+    "name": "PRIMER PU 8:1 - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/primer-pu-8_1-novo-1.webp",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-diluente",
+    "name": "DILUENTE - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Solventes & Diluentes",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/diluente_.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-7700",
+    "name": "PRODUTO 7700 - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/03/7700.webp",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-ht-40",
+    "name": "HT-40 - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2024/06/ht-40.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-wash-primer",
+    "name": "WASH PRIMER - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/wash-primer.png",
+    "priceOnRequest": true
   }
 ]
