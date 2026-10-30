@@ -1714,5 +1714,21 @@
       "Vermelho 400ml",
       "Verniz brilhante 400ml"
     ]
+  },
+  {
+    "id": "farben-thinners-selecao",
+    "name": "THINNERS FARBEN — ESCOLHA O TIPO",
+    "brand": "Farben",
+    "category": "Solventes & Diluentes",
+    "price": 0,
+    "image": "https://farben.cdn.magazord.com.br/img/2025/07/produto/702/285-lata-thinner-5000-6000-900-ml-copiar-2.jpg?ims=600x600",
+    "priceOnRequest": true,
+    "variants": [
+      "Thinner Limpeza 5000 5L",
+      "Thinner Limpeza 5500 5L",
+      "Thinner Limpeza 5500 900ml",
+      "Thinner PU 8000 5L",
+      "Thinner PU 8000 900ml"
+    ]
   }
 ]
