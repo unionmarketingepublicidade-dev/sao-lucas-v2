@@ -1990,5 +1990,41 @@
       "0,5 L",
       "900 ml"
     ]
+  },
+  {
+    "id": "maxirubber-f76d3302f87e",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 28",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/f76d3302f87e0b8438f72cc7b20a93e0.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-bdf4b7f95793",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 29",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/bdf4b7f95793e282e36a3991eb779e88.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-8b17e29592f1",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 30",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/8b17e29592f18edc45126e0a725708bc.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-29efd68204a7",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 31",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/29efd68204a736e85e2e2c20ad056e89.jpg",
+    "priceOnRequest": true
   }
 ]
