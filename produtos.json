@@ -2061,5 +2061,18 @@
       "Papel Kraft 90 cm",
       "Papel Kraft 45 cm"
     ]
+  },
+  {
+    "id": "polimax-papel-semikraft-mascaramento",
+    "name": "PAPEL SEMIKRAFT PARA MASCARAMENTO - POLIMAX",
+    "brand": "Polimax",
+    "category": "Fitas & Mascaramento",
+    "price": 0,
+    "image": "",
+    "priceOnRequest": true,
+    "variants": [
+      "Papel Semikraft 45 cm",
+      "Papel Semikraft 90 cm"
+    ]
   }
 ]
