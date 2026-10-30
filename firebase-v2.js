@@ -45,7 +45,18 @@ el('adminLogin').onclick=async()=>{
 el('adminLogout').onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{isAdmin=!!user&&user.uid===ADMIN_UID;el('loginArea').hidden=isAdmin;el('adminArea').hidden=!isAdmin;status(isAdmin?'Administrador autenticado.':'Entre com a conta administrativa autorizada.');if(user&&!isAdmin)status('Esta conta não tem permissão administrativa.');});
 // A prévia local funciona sem Firebase; em hospedagem HTTPS o catálogo recebe os dados do Firestore.
-async function refreshCatalog(){try{const snap=await getDocs(collection(db,'products'));if(snap.empty)return;const list=snap.docs.map(d=>d.data()).filter(p=>p&&p.id&&p.name);if(!list.length)return;window.v2Catalog.PRODUCTS.splice(0,window.v2Catalog.PRODUCTS.length,...list);window.v2Catalog.CATS.splice(0,window.v2Catalog.CATS.length,...new Set(list.map(p=>p.category).filter(Boolean)));window.v2Catalog.render();}catch(e){console.warn('Firestore indisponível; exibindo catálogo de demonstração',e)}}
+async function refreshCatalog(){
+  try{
+    const snap=await getDocs(collection(db,'products'));
+    const saved=new Map(snap.docs.map(d=>[d.id,{...d.data(),id:d.id}]));
+    const merged=initialCatalog.map(p=>saved.get(p.id)||p).filter(p=>!p.deleted);
+    const initialIds=new Set(initialCatalog.map(p=>p.id));
+    for(const p of saved.values())if(!initialIds.has(p.id)&&!p.deleted)merged.push(p);
+    window.v2Catalog.PRODUCTS.splice(0,window.v2Catalog.PRODUCTS.length,...merged);
+    window.v2Catalog.CATS.splice(0,window.v2Catalog.CATS.length,...new Set(merged.map(p=>p.category).filter(Boolean)));
+    window.v2Catalog.render();
+  }catch(e){console.warn('Firestore indisponível; mantendo catálogo local',e)}
+}
 // PRODUCTs e CATS estão declarados em script clássico, e portanto acessíveis globalmente.
 refreshCatalog();
 el('importCatalog').onclick=async()=>{if(!isAdmin)return;const source=initialCatalog;if(!confirm(`Importar até ${source.length} produtos para o Firebase São Lucas 2? Produtos já existentes não serão substituídos.`))return;el('importCatalog').disabled=true;try{const existing=await getDocs(collection(db,'products'));const ids=new Set(existing.docs.map(d=>d.id));const pending=source.filter(p=>!ids.has(p.id));let done=0;for(let i=0;i<pending.length;i+=350){const batch=writeBatch(db);for(const p of pending.slice(i,i+350))batch.set(doc(db,'products',p.id),p);await batch.commit();done+=Math.min(350,pending.length-i);setSync(`${done} de ${pending.length} produtos importados.`)}setSync(`Concluído: ${done} novos produtos. ${source.length-done} já existiam.`);await refreshCatalog();await loadManagedProducts()}catch(e){setSync('Falha na importação: '+(e.message||e))}finally{el('importCatalog').disabled=false}};
@@ -63,7 +74,7 @@ function clearEditor(){
 el('cancelEdit').onclick=clearEditor;
 function drawManagedProducts(){
   const q=el('adminProductSearch').value.trim().toLocaleLowerCase('pt-BR');
-  const matches=managedProducts.filter(p=>[p.name,p.brand,p.category].some(v=>safeText(v).toLocaleLowerCase('pt-BR').includes(q)));
+  const matches=managedProducts.filter(p=>!p.deleted&&[p.name,p.brand,p.category].some(v=>safeText(v).toLocaleLowerCase('pt-BR').includes(q)));
   const list=el('adminProductList');
   list.replaceChildren();
   if(!matches.length){list.textContent='Nenhum produto cadastrado encontrado no Firebase.';return}
@@ -72,7 +83,7 @@ function drawManagedProducts(){
     const row=document.createElement('div');row.className='adminproduct';
     const info=document.createElement('div');
     const name=document.createElement('strong');name.textContent=safeText(p.name);
-    const sub=document.createElement('small');sub.textContent=[p.brand,p.category,p.unavailable?'Indisponível':'Disponível'].filter(Boolean).join(' • ');
+    const sub=document.createElement('small');sub.textContent=[p.brand,p.category,p.unavailable?'Indisponível':'Disponível',p._inFirebase?'Firebase':'Catálogo inicial'].filter(Boolean).join(' • ');
     info.append(name,sub);
     const actions=document.createElement('div');actions.className='actions';
     const edit=document.createElement('button');edit.textContent='Editar';
@@ -90,7 +101,7 @@ function drawManagedProducts(){
       if(!isAdmin)return;
       toggle.disabled=true;
       try{
-        await setDoc(doc(db,'products',p.id),{unavailable:!p.unavailable},{merge:true});
+        const { _inFirebase,...productData}=p;await setDoc(doc(db,'products',p.id),{...productData,unavailable:!p.unavailable},{merge:true});
         setSync('Disponibilidade atualizada.');
         await loadManagedProducts();await refreshCatalog();
       }catch(e){setSync('Erro ao atualizar: '+(e.message||e))}
@@ -99,10 +110,10 @@ function drawManagedProducts(){
     const del=document.createElement('button');del.textContent='Excluir';del.className='danger';
     del.onclick=async()=>{
       if(!isAdmin)return;
-      if(!confirm('Excluir permanentemente o produto "'+p.name+'" do Firebase? Esta ação não pode ser desfeita.'))return;
+      if(!confirm('Remover "'+p.name+'" da loja? Esta ação ficará registrada no Firebase.'))return;
       del.disabled=true;
       try{
-        await deleteDoc(doc(db,'products',p.id));
+        if(initialCatalog.some(item=>item.id===p.id)){await setDoc(doc(db,'products',p.id),{id:p.id,deleted:true},{merge:true});}else{await deleteDoc(doc(db,'products',p.id));}
         if(el('editingProductId').value===p.id)clearEditor();
         setSync('Produto excluído do Firebase.');
         await loadManagedProducts();await refreshCatalog();
@@ -117,7 +128,7 @@ async function loadManagedProducts(){
   el('adminProductList').textContent='Carregando produtos do Firebase...';
   try{
     const snap=await getDocs(collection(db,'products'));
-    managedProducts=snap.docs.map(d=>({...d.data(),id:d.id})).sort((a,b)=>safeText(a.name).localeCompare(safeText(b.name),'pt-BR'));
+    const saved=new Map(snap.docs.map(d=>[d.id,{...d.data(),id:d.id,_inFirebase:true}]));const base=initialCatalog.map(p=>saved.get(p.id)||{...p,_inFirebase:false});const initialIds=new Set(initialCatalog.map(p=>p.id));managedProducts=[...base,...[...saved.values()].filter(p=>!initialIds.has(p.id))].filter(p=>!p.deleted).sort((a,b)=>safeText(a.name).localeCompare(safeText(b.name),'pt-BR'));
     drawManagedProducts();
   }catch(e){el('adminProductList').textContent='Erro ao carregar: '+(e.message||e)}
 }
@@ -132,7 +143,7 @@ el('saveNewProduct').onclick=async()=>{
   if(!Number.isFinite(price)||price<0){setSync('Preço inválido.');return}
   const existingId=el('editingProductId').value;
   const id=existingId||'v2-'+crypto.randomUUID();
-  const fields={id,name,brand,category,image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0};
+  const fields={id,name,brand,category,image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0};if(existingId){const original=managedProducts.find(p=>p.id===existingId);if(original&&!original._inFirebase){const {_inFirebase,...base}=original;Object.assign(fields,base,{id,name,brand,category,image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0});}}
   if(!existingId)Object.assign(fields,{description:'',rating:0,reviewsCount:0,sections:[]});
   const button=el('saveNewProduct');button.disabled=true;
   try{
