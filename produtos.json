@@ -1663,5 +1663,32 @@
     "price": 0,
     "image": "https://www5.anjo.com.br/img/produtos/latas/img_221.png",
     "priceOnRequest": true
+  },
+  {
+    "id": "autoamerica-fast-cut-formula-original",
+    "name": "FAST CUT FORMULA ORIGINAL",
+    "brand": "A confirmar",
+    "category": "Polimento & Acabamento",
+    "price": 0,
+    "image": "https://www.autoamerica.com.br/wp-content/uploads/2022/12/Fast-Cut-Formula-Original.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "farben-massa-poliester-900g",
+    "name": "MASSA POLIÉSTER 900G - FARBEN",
+    "brand": "Farben",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://farben.cdn.magazord.com.br/img/2025/05/produto/627/331-lata-massa-poliestar-900g.jpg?ims=600x600",
+    "priceOnRequest": true
+  },
+  {
+    "id": "farben-thinner-5000-900ml",
+    "name": "THINNER 5000 900ML - FARBEN",
+    "brand": "Farben",
+    "category": "Solventes & Diluentes",
+    "price": 0,
+    "image": "https://farben.cdn.magazord.com.br/img/2025/07/produto/702/285-lata-thinner-5000-6000-900-ml-copiar-2.jpg?ims=600x600",
+    "priceOnRequest": true
   }
 ]
