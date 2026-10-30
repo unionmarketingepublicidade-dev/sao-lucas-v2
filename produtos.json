@@ -1739,5 +1739,77 @@
     "price": 0,
     "image": "https://farben.cdn.magazord.com.br/img/2025/09/produto/775/151-lata-900ml-verniz-pu-hp-42-mm-900ml.jpg?ims=290x290",
     "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-df4c75b58469",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 1",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/df4c75b5846925e2981bcb1ef7c4a39e.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-397c04c85531",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 2",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/397c04c85531feb6e0e62122683e9333.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-2fca0158e1d8",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 3",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/2fca0158e1d87ed8874f2efd49d8fc2d.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-0d810f7100b9",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 4",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/0d810f7100b964c2d0cee47b4e3b5274.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-783facf13f51",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 5",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/783facf13f513437d3c4a7d6d27a8808.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-ee4ae74d9a64",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 6",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/ee4ae74d9a64b24c3c60dc4ed4b8b5bf.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-153fd90790a6",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 7",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/153fd90790a6ba011908c56630cd651e.jpg",
+    "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-44ddbfc802f2",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 8",
+    "brand": "Maxi Rubber",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/44ddbfc802f209fb92daed44c430e544.jpg",
+    "priceOnRequest": true
   }
 ]
