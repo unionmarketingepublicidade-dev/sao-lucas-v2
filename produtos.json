@@ -2240,5 +2240,21 @@
       "Grão 600",
       "Grão 80"
     ]
+  },
+  {
+    "id": "3m-lixa-dagua-401q",
+    "name": "LIXA D'ÁGUA 401Q - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1063591J/p1000-401q-wetordry-9x11-abrasive-sheet.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 1200",
+      "Grão 1500",
+      "Grão 2000",
+      "Grão 2500",
+      "Grão 3000"
+    ]
   }
 ]
