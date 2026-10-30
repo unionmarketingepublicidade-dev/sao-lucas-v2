@@ -1600,5 +1600,68 @@
     "price": 0,
     "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/wash-primer.png",
     "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-110",
+    "name": "PRODUTO ANJO - REF. 110",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_110.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-73",
+    "name": "PRODUTO ANJO - REF. 73",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_73.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-115",
+    "name": "PRODUTO ANJO - REF. 115",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_115.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-223",
+    "name": "PRODUTO ANJO - REF. 223",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_223.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-189",
+    "name": "PRODUTO ANJO - REF. 189",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_189.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-222",
+    "name": "PRODUTO ANJO - REF. 222",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_222.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "anjo-img-221",
+    "name": "PRODUTO ANJO - REF. 221",
+    "brand": "Anjo",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://www5.anjo.com.br/img/produtos/latas/img_221.png",
+    "priceOnRequest": true
   }
 ]
