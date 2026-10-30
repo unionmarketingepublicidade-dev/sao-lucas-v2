@@ -2273,5 +2273,21 @@
       "Grão 50",
       "Grão 80"
     ]
+  },
+  {
+    "id": "3m-disco-blue-338u-152mm-6f",
+    "name": "DISCO BLUE 338U 152 MM 6 FUROS - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/2532272J/3m-hookit-338u-abrasive-discs-family.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 150 — 152 mm — 6 furos",
+      "Grão 220 — 152 mm — 6 furos",
+      "Grão 320 — 152 mm — 6 furos",
+      "Grão 400 — 152 mm — 6 furos",
+      "Grão 80 — 152 mm — 6 furos"
+    ]
   }
 ]
