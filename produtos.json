@@ -2203,5 +2203,25 @@
     "price": 0,
     "image": "https://multimedia.3m.com/mws/media/2811324J/high-performance-yellow-masking-tape-brazil-mixed-family.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "3m-lixa-blue-338u",
+    "name": "LIXA BLUE 338U - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1422856J/3m-sandpaper-blue-sheet-338u.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 120",
+      "Grão 150",
+      "Grão 180",
+      "Grão 220",
+      "Grão 320",
+      "Grão 400",
+      "Grão 600",
+      "Grão 80",
+      "Grão 800"
+    ]
   }
 ]
