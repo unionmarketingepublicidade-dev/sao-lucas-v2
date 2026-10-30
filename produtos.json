@@ -2172,5 +2172,18 @@
     "price": 0,
     "image": "https://multimedia.3m.com/mws/media/1771688J/30806-trizact-8000-6-in-disc-4-car-cv.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "3m-faixa-refletiva-50x305mm",
+    "name": "FAIXA REFLETIVA 50 X 305 MM - 3M",
+    "brand": "3M",
+    "category": "Itens de Apoio",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1573314J/photography-conspicuity-markings-left-983-326.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Lado direito — 50 x 305 mm",
+      "Lado esquerdo — 50 x 305 mm"
+    ]
   }
 ]
