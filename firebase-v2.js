@@ -67,6 +67,7 @@ function clearEditor(){
   el('editingProductId').value='';
   for(const id of ['newName','newBrand','newCategory','newPrice','newImage'])el(id).value='';
   el('newUnavailable').checked=false;
+  el('newPhoto').value='';el('newPhotoPreview').hidden=true;el('newPhotoPreview').removeAttribute('src');
   el('productFormTitle').textContent='Adicionar produto';
   el('saveNewProduct').textContent='Salvar produto';
   el('cancelEdit').hidden=true;
@@ -91,6 +92,7 @@ function drawManagedProducts(){
       el('editingProductId').value=p.id;
       for(const [id,key] of [['newName','name'],['newBrand','brand'],['newCategory','category'],['newPrice','price'],['newImage','image']])el(id).value=p[key]??'';
       el('newUnavailable').checked=!!p.unavailable;
+      el('newPhoto').value='';el('newPhotoPreview').hidden=!p.image;if(p.image)el('newPhotoPreview').src=p.image;
       el('productFormTitle').textContent='Editando: '+p.name;
       el('saveNewProduct').textContent='Salvar alterações';
       el('cancelEdit').hidden=false;
@@ -149,6 +151,36 @@ async function loadManagedProducts(){
 el('adminProductSearch').oninput=drawManagedProducts;
 el('reloadProducts').onclick=loadManagedProducts;
 onAuthStateChanged(auth,user=>{if(user?.uid===ADMIN_UID)loadManagedProducts();else{managedProducts=[];el('adminProductList').textContent='Entre para gerenciar produtos.'}});
+// Fotos compactadas como data URL no Firestore Spark. Evita tokens GitHub expostos.
+async function compressPhoto(file){
+  if(!file.type.startsWith('image/'))throw Error('Escolha um arquivo de imagem.');
+  if(file.size>15*1024*1024)throw Error('Imagem original maior que 15 MB.');
+  const bitmap=await createImageBitmap(file);
+  try{
+    for(const maxSide of [900,720,560,440,320]){
+      const scale=Math.min(1,maxSide/Math.max(bitmap.width,bitmap.height));
+      const canvas=document.createElement('canvas');
+      canvas.width=Math.max(1,Math.round(bitmap.width*scale));
+      canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+      const ctx=canvas.getContext('2d');
+      ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+      for(const quality of [0.8,0.65,0.5]){
+        const data=canvas.toDataURL('image/webp',quality);
+        if(data.length<200000)return data;
+      }
+    }
+    throw Error('Não foi possível reduzir a foto para menos de 150 KB.');
+  }finally{bitmap.close()}
+}
+el('newPhoto').addEventListener('change',async()=>{
+  const file=el('newPhoto').files?.[0];if(!file)return;
+  try{
+    const data=await compressPhoto(file);
+    el('newPhotoPreview').src=data;el('newPhotoPreview').hidden=false;
+    setSync('Foto preparada. Clique em Salvar produto para gravá-la.');
+  }catch(e){el('newPhoto').value='';setSync('Erro na foto: '+e.message)}
+});
 el('saveNewProduct').onclick=async()=>{
   if(!isAdmin)return;
   const name=el('newName').value.trim(),brand=el('newBrand').value.trim(),category=el('newCategory').value.trim(),image=el('newImage').value.trim();
@@ -157,7 +189,11 @@ el('saveNewProduct').onclick=async()=>{
   if(!Number.isFinite(price)||price<0){setSync('Preço inválido.');return}
   const existingId=el('editingProductId').value;
   const id=existingId||'v2-'+crypto.randomUUID();
-  const fields={id,name,brand,category,image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0};if(existingId){const original=managedProducts.find(p=>p.id===existingId);if(original&&!original._inFirebase){const {_inFirebase,...base}=original;Object.assign(fields,base,{id,name,brand,category,image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0});}}
+  let finalImage=image;
+  const photo=el('newPhoto').files?.[0];
+  if(photo){try{finalImage=await compressPhoto(photo)}catch(e){setSync('Erro na foto: '+e.message);return}}
+  if(existingId&&!finalImage){const original=managedProducts.find(p=>p.id===existingId);finalImage=original?.image||'';}
+  const fields={id,name,brand,category,image:finalImage,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0};if(existingId){const original=managedProducts.find(p=>p.id===existingId);if(original&&!original._inFirebase){const {_inFirebase,...base}=original;Object.assign(fields,base,{id,name,brand,category,image:finalImage||base.image,price,unavailable:el('newUnavailable').checked,priceOnRequest:price===0});}}
   if(!existingId)Object.assign(fields,{description:'',rating:0,reviewsCount:0,sections:[]});
   const button=el('saveNewProduct');button.disabled=true;
   try{
