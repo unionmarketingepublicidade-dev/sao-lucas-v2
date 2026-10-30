@@ -1510,5 +1510,14 @@
     "price": 0,
     "image": "/input_file_0.png",
     "priceOnRequest": true
+  },
+  {
+    "id": "adere-fita-crepe-verde-18mmx50m",
+    "name": "FITA CREPE 18MMX50M VERDE - ADERE",
+    "brand": "Adere",
+    "category": "Fitas & Mascaramento",
+    "price": 0,
+    "image": "",
+    "priceOnRequest": true
   }
 ]
