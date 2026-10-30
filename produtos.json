@@ -2163,5 +2163,14 @@
     "price": 0,
     "image": "https://multimedia.3m.com/mws/media/783843J/3m-tm-hookit-tm-trizact-tm-foam-disc-30662.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "3m-disco-trizact-8000-30806",
+    "name": "DISCO TRIZACT GRÃO 8000 - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1771688J/30806-trizact-8000-6-in-disc-4-car-cv.jpg",
+    "priceOnRequest": true
   }
 ]
