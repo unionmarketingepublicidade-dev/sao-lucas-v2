@@ -2145,5 +2145,14 @@
     "price": 0,
     "image": "https://multimedia.3m.com/mws/media/751000J/scotch-brite-tm-clean-and-strip-xt-disc-6-in-x-5-8-in-s-xcs.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "3m-disco-trizact-1500",
+    "name": "DISCO TRIZACT GRÃO 1500 - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1026174S/trizact-1500-disc-box-and-product-picture.jpg",
+    "priceOnRequest": true
   }
 ]
