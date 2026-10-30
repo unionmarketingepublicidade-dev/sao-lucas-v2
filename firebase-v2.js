@@ -13,13 +13,41 @@ let isAdmin=false;
 const initialCatalog=window.v2Catalog.PRODUCTS.map(product=>structuredClone(product));
 el('adminClose').onclick=()=>el('adminModal').hidden=true;
 el('adminModal').onclick=e=>{if(e.target===el('adminModal'))el('adminModal').hidden=true};
-el('adminLogin').onclick=async()=>{try{await signInWithEmailAndPassword(auth,el('adminEmail').value.trim(),el('adminPassword').value)}catch(e){status('Não foi possível entrar: '+e.code)}};
+el('adminLogin').onclick=async()=>{
+  const button=el('adminLogin');
+  const email=el('adminEmail').value.trim();
+  const password=el('adminPassword').value;
+  if(!email||!password){status('Preencha e-mail e senha.');return}
+  button.disabled=true;
+  status('Conectando ao Firebase...');
+  try{
+    const result=await signInWithEmailAndPassword(auth,email,password);
+    if(result.user.uid!==ADMIN_UID){
+      status('Conta autenticada, mas sem permissão de administrador neste projeto.');
+    }else{
+      status('Login realizado. Abrindo painel...');
+      el('loginArea').hidden=true;
+      el('adminArea').hidden=false;
+    }
+  }catch(e){
+    console.error('Falha no login Firebase',e);
+    const messages={
+      'auth/invalid-credential':'E-mail ou senha não conferem com o cadastro do Firebase São Lucas 2.',
+      'auth/invalid-email':'E-mail inválido.',
+      'auth/operation-not-allowed':'Login por e-mail e senha não está habilitado no Firebase.',
+      'auth/unauthorized-domain':'O domínio do GitHub Pages precisa ser autorizado em Firebase Authentication > Settings > Authorized domains.',
+      'auth/network-request-failed':'Falha de rede ao conectar ao Firebase.',
+      'auth/too-many-requests':'Muitas tentativas. Aguarde antes de tentar novamente.'
+    };
+    status(messages[e.code]||('Erro ao entrar: '+(e.code||e.message)));
+  }finally{button.disabled=false}
+};
 el('adminLogout').onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{isAdmin=!!user&&user.uid===ADMIN_UID;el('loginArea').hidden=isAdmin;el('adminArea').hidden=!isAdmin;status(isAdmin?'Administrador autenticado.':'Entre com a conta administrativa autorizada.');if(user&&!isAdmin)status('Esta conta não tem permissão administrativa.');});
 // A prévia local funciona sem Firebase; em hospedagem HTTPS o catálogo recebe os dados do Firestore.
 async function refreshCatalog(){try{const snap=await getDocs(collection(db,'products'));if(snap.empty)return;const list=snap.docs.map(d=>d.data()).filter(p=>p&&p.id&&p.name);if(!list.length)return;window.v2Catalog.PRODUCTS.splice(0,window.v2Catalog.PRODUCTS.length,...list);window.v2Catalog.CATS.splice(0,window.v2Catalog.CATS.length,...new Set(list.map(p=>p.category).filter(Boolean)));window.v2Catalog.render();}catch(e){console.warn('Firestore indisponível; exibindo catálogo de demonstração',e)}}
 // PRODUCTs e CATS estão declarados em script clássico, e portanto acessíveis globalmente.
-await refreshCatalog();
+refreshCatalog();
 el('importCatalog').onclick=async()=>{if(!isAdmin)return;const source=initialCatalog;if(!confirm(`Importar até ${source.length} produtos para o Firebase São Lucas 2? Produtos já existentes não serão substituídos.`))return;el('importCatalog').disabled=true;try{const existing=await getDocs(collection(db,'products'));const ids=new Set(existing.docs.map(d=>d.id));const pending=source.filter(p=>!ids.has(p.id));let done=0;for(let i=0;i<pending.length;i+=350){const batch=writeBatch(db);for(const p of pending.slice(i,i+350))batch.set(doc(db,'products',p.id),p);await batch.commit();done+=Math.min(350,pending.length-i);setSync(`${done} de ${pending.length} produtos importados.`)}setSync(`Concluído: ${done} novos produtos. ${source.length-done} já existiam.`);await refreshCatalog()}catch(e){setSync('Falha na importação: '+(e.message||e))}finally{el('importCatalog').disabled=false}};
 el('saveNewProduct').onclick=async()=>{if(!isAdmin)return;const name=el('newName').value.trim(),brand=el('newBrand').value.trim(),category=el('newCategory').value.trim(),image=el('newImage').value.trim(),price=Number(el('newPrice').value)||0;if(!name||!brand||!category){setSync('Preencha nome, marca e categoria.');return}const id='v2-'+crypto.randomUUID();const p={id,name,brand,category,image,price,description:'',rating:0,reviewsCount:0,sections:[],priceOnRequest:price===0};try{await setDoc(doc(db,'products',id),p);setSync('Produto salvo no Firebase.');['newName','newBrand','newCategory','newPrice','newImage'].forEach(id=>el(id).value='');await refreshCatalog()}catch(e){setSync('Erro ao salvar: '+(e.message||e))}};
 
