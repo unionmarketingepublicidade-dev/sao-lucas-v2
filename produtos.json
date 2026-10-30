@@ -2136,5 +2136,14 @@
       "Grão 60",
       "Grão 80"
     ]
+  },
+  {
+    "id": "3m-disco-removedor-115x22mm",
+    "name": "DISCO REMOVEDOR 115MM X 22MM - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/751000J/scotch-brite-tm-clean-and-strip-xt-disc-6-in-x-5-8-in-s-xcs.jpg",
+    "priceOnRequest": true
   }
 ]
