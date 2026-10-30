@@ -2093,5 +2093,20 @@
       "Grão 600",
       "Grão 80"
     ]
+  },
+  {
+    "id": "3m-disco-fibra-24-36",
+    "name": "DISCO DE FIBRA - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/1591440J/3m-382c-sandpaper.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 24 — Grande 178 mm",
+      "Grão 24 — Pequeno 115 mm",
+      "Grão 36 — Pequeno 115 mm",
+      "Grão 36 — Grande 178 mm"
+    ]
   }
 ]
