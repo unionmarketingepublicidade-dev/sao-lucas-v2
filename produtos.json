@@ -2026,5 +2026,18 @@
     "price": 0,
     "image": "https://www.maxirubber.com.br/upload/products/29efd68204a736e85e2e2c20ad056e89.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-31c17f47c8a7",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 32",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/31c17f47c8a7f197e6fad7aa2d63cf8c.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "150 g",
+      "290 g"
+    ]
   }
 ]
