@@ -1690,5 +1690,26 @@
     "price": 0,
     "image": "https://farben.cdn.magazord.com.br/img/2025/07/produto/702/285-lata-thinner-5000-6000-900-ml-copiar-2.jpg?ims=600x600",
     "priceOnRequest": true
+  },
+  {
+    "id": "farben-spray-color-premium",
+    "name": "TINTA SPRAY COLOR PREMIUM - FARBEN",
+    "brand": "Farben",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "",
+    "priceOnRequest": true,
+    "variants": [
+      "Amarelo 400ml",
+      "Azul escuro 400ml",
+      "Branco brilhante 400ml",
+      "Luminoso amarelo 350ml",
+      "Luminoso laranja 350ml",
+      "Luminoso verde 350ml",
+      "Luminoso vermelho 350ml",
+      "Preto brilhante 400ml",
+      "Preto fosco 400ml",
+      "Preto fosco alta temperatura 350ml"
+    ]
   }
 ]
