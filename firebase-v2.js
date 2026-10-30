@@ -123,14 +123,28 @@ function drawManagedProducts(){
     actions.append(edit,toggle,del);row.append(info,actions);list.append(row);
   }
 }
+let managedLoadSequence=0;
+function sortManaged(list){return list.filter(p=>!p.deleted).sort((a,b)=>safeText(a.name).localeCompare(safeText(b.name),'pt-BR'))}
 async function loadManagedProducts(){
   if(!isAdmin)return;
-  el('adminProductList').textContent='Carregando produtos do Firebase...';
+  const seq=++managedLoadSequence;
+  // Exibe o catálogo inicial imediatamente, sem depender da rede.
+  const previouslySaved=new Map(managedProducts.filter(p=>p._inFirebase).map(p=>[p.id,p]));
+  const initialIds=new Set(initialCatalog.map(p=>p.id));
+  managedProducts=sortManaged([...initialCatalog.map(p=>previouslySaved.get(p.id)||{...p,_inFirebase:false}),...managedProducts.filter(p=>p._inFirebase&&!initialIds.has(p.id))]);
+  drawManagedProducts();
+  setSync('Catálogo exibido. Sincronizando alterações do Firebase...');
   try{
     const snap=await getDocs(collection(db,'products'));
-    const saved=new Map(snap.docs.map(d=>[d.id,{...d.data(),id:d.id,_inFirebase:true}]));const base=initialCatalog.map(p=>saved.get(p.id)||{...p,_inFirebase:false});const initialIds=new Set(initialCatalog.map(p=>p.id));managedProducts=[...base,...[...saved.values()].filter(p=>!initialIds.has(p.id))].filter(p=>!p.deleted).sort((a,b)=>safeText(a.name).localeCompare(safeText(b.name),'pt-BR'));
+    if(seq!==managedLoadSequence||!isAdmin)return;
+    const saved=new Map(snap.docs.map(d=>[d.id,{...d.data(),id:d.id,_inFirebase:true}]));
+    managedProducts=sortManaged([...initialCatalog.map(p=>saved.get(p.id)||{...p,_inFirebase:false}),...[...saved.values()].filter(p=>!initialIds.has(p.id))]);
     drawManagedProducts();
-  }catch(e){el('adminProductList').textContent='Erro ao carregar: '+(e.message||e)}
+    setSync('Catálogo sincronizado: '+managedProducts.length+' produtos.');
+  }catch(e){
+    if(seq!==managedLoadSequence)return;
+    setSync('Catálogo local disponível; sincronização pendente: '+(e.code||e.message||e));
+  }
 }
 el('adminProductSearch').oninput=drawManagedProducts;
 el('reloadProducts').onclick=loadManagedProducts;
