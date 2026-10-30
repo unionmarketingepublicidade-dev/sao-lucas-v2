@@ -2185,5 +2185,14 @@
       "Lado direito — 50 x 305 mm",
       "Lado esquerdo — 50 x 305 mm"
     ]
+  },
+  {
+    "id": "3m-filtro-particulado-5n11-n95",
+    "name": "FILTRO PARA PARTICULADOS 5N11 N95 - 3M",
+    "brand": "3M",
+    "category": "Equipamentos & EPI",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/2675294J/3m-particulate-filter-5n11-n95.jpg",
+    "priceOnRequest": true
   }
 ]
