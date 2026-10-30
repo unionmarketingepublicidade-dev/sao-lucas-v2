@@ -11,7 +11,23 @@ const setSync=message=>el('syncStatus').textContent=message;
 let isAdmin=false;
 // Cópia imutável do catálogo de origem, independente dos produtos já presentes no Firestore.
 const initialCatalog=window.v2Catalog.PRODUCTS.map(product=>structuredClone(product));
-el('adminOpen').onclick=()=>el('adminModal').hidden=false;
+// Acesso discreto: sete cliques consecutivos na logo do cabeçalho.
+const logo=document.querySelector('header .logo');
+let logoClicks=0;
+let lastLogoClick=0;
+if(logo){
+  logo.style.cursor='pointer';
+  logo.addEventListener('click',()=>{
+    const now=Date.now();
+    if(now-lastLogoClick>2500)logoClicks=0;
+    lastLogoClick=now;
+    logoClicks++;
+    if(logoClicks>=7){
+      logoClicks=0;
+      el('adminModal').hidden=false;
+    }
+  });
+}
 el('adminClose').onclick=()=>el('adminModal').hidden=true;
 el('adminModal').onclick=e=>{if(e.target===el('adminModal'))el('adminModal').hidden=true};
 el('adminLogin').onclick=async()=>{try{await signInWithEmailAndPassword(auth,el('adminEmail').value.trim(),el('adminPassword').value)}catch(e){status('Não foi possível entrar: '+e.code)}};
