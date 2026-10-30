@@ -2108,5 +2108,18 @@
       "Grão 36 — Pequeno 115 mm",
       "Grão 36 — Grande 178 mm"
     ]
+  },
+  {
+    "id": "disco-fibra-7pol-graos-50-80",
+    "name": "DISCO DE FIBRA 7'' — GRÃOS 50 E 80",
+    "brand": "A confirmar",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSoUYt44bHG7YqO4AkCV4NHkgAh5b5U3Q1rhAG87TLSmBr55VN1WoQLN71QeX7CGRgddtZLQDXhzB1BHZg6X45I9erlV3UYCg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 50 — 7 polegadas",
+      "Grão 80 — 7 polegadas"
+    ]
   }
 ]
