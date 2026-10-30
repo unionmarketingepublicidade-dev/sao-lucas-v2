@@ -2223,5 +2223,22 @@
       "Grão 80",
       "Grão 800"
     ]
+  },
+  {
+    "id": "3m-lixa-dagua-331q",
+    "name": "LIXA D'ÁGUA 331Q - 3M",
+    "brand": "3M",
+    "category": "Lixas & Abrasivos",
+    "price": 0,
+    "image": "https://multimedia.3m.com/mws/media/2049740J/individual-photo-of-the-water-sandpaper-product.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "Grão 220",
+      "Grão 320",
+      "Grão 360",
+      "Grão 400",
+      "Grão 600",
+      "Grão 80"
+    ]
   }
 ]
