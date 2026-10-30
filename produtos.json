@@ -1964,5 +1964,18 @@
     "price": 0,
     "image": "https://www.maxirubber.com.br/upload/products/093f95cb305aee2a528dcc8ee77b2a9b.jpg",
     "priceOnRequest": true
+  },
+  {
+    "id": "maxirubber-6e2914fc1b59",
+    "name": "PRODUTO MAXI RUBBER — IDENTIFICAR 26",
+    "brand": "Maxi Rubber",
+    "category": "Complementos & Solventes",
+    "price": 0,
+    "image": "https://www.maxirubber.com.br/upload/products/6e2914fc1b595b64a425c9d9e95afaa1.jpg",
+    "priceOnRequest": true,
+    "variants": [
+      "1 kg",
+      "900 ml"
+    ]
   }
 ]
