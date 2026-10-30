@@ -1519,5 +1519,32 @@
     "price": 0,
     "image": "",
     "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-colorbase",
+    "name": "COLORBASE BASE POLIÉSTER - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/colorbase.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-desengraxante",
+    "name": "DESENGRAXANTE - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Preparação & Massas",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/03/desengraxante_novo.png",
+    "priceOnRequest": true
+  },
+  {
+    "id": "brazilian-colorlac",
+    "name": "COLORLAC LACA NITROCELULOSE - BRAZILIAN",
+    "brand": "Brazilian",
+    "category": "Pintura Automotiva",
+    "price": 0,
+    "image": "https://tintasbrazilian.com.br/wp-content/uploads/2023/02/Colorlac.png",
+    "priceOnRequest": true
   }
 ]
